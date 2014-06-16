@@ -1,5 +1,11 @@
 class AddAdminToUsers < ActiveRecord::Migration
-  def change
-    add_column :users, :admin, :boolean
-  end
+	def change
+		create_table :microposts do |t|
+			t.string :content
+			t.string :user_id
+
+			t.timestamps
+		end
+		add_index :microposts, [:user_id, :created_at]
+	end
 end
